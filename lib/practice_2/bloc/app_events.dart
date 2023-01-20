@@ -10,4 +10,5 @@ abstract class UserEvent extends Equatable {
 class LoadingUserEvent extends UserEvent {
   @override
   List<Object> get props => [];
+  // List<Object> get prop => [];
 }

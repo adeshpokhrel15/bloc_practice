@@ -12,6 +12,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
       try {
         final users = await _userRepository.getUser();
+        // final deleteUser = await _userRepository.deleteUser();
         emit(UserLoadedState(users));
       } catch (e) {
         emit(UserErrorState(e.toString()));

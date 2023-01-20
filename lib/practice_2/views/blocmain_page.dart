@@ -1,5 +1,6 @@
 import 'package:bloc_pratical/practice_2/bloc/app_states.dart';
 import 'package:bloc_pratical/practice_2/features/data/data_source.dart';
+import 'package:bloc_pratical/practice_2/views/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,11 +46,19 @@ class BlocMainPage extends StatelessWidget {
                                     color: Colors.blue,
                                     child:
                                         Text(usersList[index].that.toString())),
-                                Text(
-                                  usersList[index].title,
-                                  style: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold),
+                                InkWell(
+                                  onTap: () {
+                                    // Navigator.of(context).push(
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             DetailsPage(usersList[index])));
+                                  },
+                                  child: Text(
+                                    usersList[index].title,
+                                    style: const TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 20,
@@ -82,8 +91,15 @@ class BlocMainPage extends StatelessWidget {
                 },
               );
             }
-            return Container();
+            return const Center(child: CircularProgressIndicator());
           }),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const AddToPage()));
+          },
+          child: const Icon(Icons.add),
         ));
   }
 }
