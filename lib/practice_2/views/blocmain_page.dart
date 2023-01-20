@@ -13,6 +13,7 @@ class BlocMainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserDataSource userDataSource = UserDataSource();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Bloc'),
@@ -74,7 +75,10 @@ class BlocMainPage extends StatelessWidget {
                                           style: TextStyle(color: Colors.green),
                                         )),
                                     TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          userDataSource.deleteUser(
+                                              usersList[index].that);
+                                        },
                                         child: const Text(
                                           'Delete',
                                           style: TextStyle(color: Colors.red),

@@ -40,6 +40,27 @@ class UserDataSource {
       throw Exception('Failed to load data');
     }
   }
+
+  Future<List<UserModel>> updateUser() async {
+    final response = await http.put(Uri.parse(ApiCommon.url));
+    if (response.statusCode == 200) {
+      final List result = jsonDecode(response.body);
+      // print(result);
+      return result.map((e) => UserModel.fromJson(e)).toList();
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+  Future<void> deleteUser(int id) async {
+    final response = await http
+        .delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
+    if (response.statusCode == 200) {
+      print("Successfully");
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 }
 
 // class CommentDataSource {
