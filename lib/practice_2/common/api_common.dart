@@ -1,3 +1,3 @@
 class ApiCommon {
-  static const url = 'https://reqres.in/api/users?page=2';
+  static const url = 'https://jsonplaceholder.typicode.com/posts';
 }

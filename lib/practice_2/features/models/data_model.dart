@@ -1,26 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserModel {
-  final int id;
-  final String email;
-  final String firstName;
-  final String lastName;
-  final String avatar;
+  final int userId;
+  final int that;
+  final String title;
+  final String body;
   UserModel({
-    required this.id,
-    required this.email,
-    required this.firstName,
-    required this.lastName,
-    required this.avatar,
+    required this.userId,
+    required this.that,
+    required this.title,
+    required this.body,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'],
-      email: json['email'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      avatar: json['avatar'],
+      userId: json['userId'],
+      that: json['id'],
+      title: json['title'],
+      body: json['body'],
     );
   }
 }

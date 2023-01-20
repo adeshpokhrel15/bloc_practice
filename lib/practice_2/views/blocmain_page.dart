@@ -31,9 +31,53 @@ class BlocMainPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: usersList.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(usersList[index].firstName),
-                    subtitle: Text(usersList[index].email),
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: SingleChildScrollView(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          Card(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                    color: Colors.blue,
+                                    child:
+                                        Text(usersList[index].that.toString())),
+                                Text(
+                                  usersList[index].title,
+                                  style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(usersList[index].body),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    TextButton(
+                                        onPressed: () {},
+                                        child: const Text(
+                                          'Edit',
+                                          style: TextStyle(color: Colors.green),
+                                        )),
+                                    TextButton(
+                                        onPressed: () {},
+                                        child: const Text(
+                                          'Delete',
+                                          style: TextStyle(color: Colors.red),
+                                        )),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 },
               );
