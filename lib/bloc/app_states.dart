@@ -5,16 +5,17 @@ import '../features/models/data_model.dart';
 
 @immutable
 abstract class UserState extends Equatable {
+  //equatable is a package that helps to compare two objects
   const UserState();
 }
 
-// data loading state
+// user data loading state
 class UserLoadingState extends UserState {
   @override
   List<Object> get props => [];
 }
 
-// data loaded state
+// user data loaded state
 class UserLoadedState extends UserState {
   const UserLoadedState(this.users);
   final List<UserModel> users;
@@ -22,7 +23,7 @@ class UserLoadedState extends UserState {
   List<Object> get props => [users];
 }
 
-//error loading state
+//user data error loading state
 class UserErrorState extends UserState {
   const UserErrorState(this.error);
   final String error;

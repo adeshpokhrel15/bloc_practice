@@ -16,11 +16,11 @@ class UserDataSource {
   }
 
 //post user
-  Future<void> postUser({
-    required int userId,
-    required String title,
-    required String body,
-  }) async {
+  Future<void> postUser(
+      {required int userId,
+      required String title,
+      required String body,
+      required int id}) async {
     final response = await http.post(Uri.parse(url),
         body: jsonEncode({
           'userId': userId,
@@ -40,7 +40,7 @@ class UserDataSource {
   }
 
   Future<UserModel> updateUser(
-      {required String userId,
+      {required int userId,
       required String title,
       required String body,
       required int id}) async {
@@ -62,32 +62,9 @@ class UserDataSource {
       throw Exception('Failed to load data');
     }
   }
-//update user
-  // Future<void> updateUser({
-  //   required int userId,
-  //   required String title,
-  //   required String body,
-  //   int? id,
-  // }) async {
-  //   final response = await http.put(
-  //       Uri.parse(
-  //         'https://jsonplaceholder.typicode.com/posts/$id}',
-  //       ),
-  //       headers: {"Content-Type": "application/json"},
-  //       body: json.encode({
-  //         'userId': userId,
-  //         'title': title,
-  //         'body': body,
-  //       }));
-  //   if (response.statusCode == 200) {
-  //     final List result = jsonDecode(response.body);
-  //     // print(result);
-  //     result.map((e) => UserModel.fromJson(e)).toList();
-  //   }
-  // }
 
 //delete user
-  Future<void> deleteUser(int id) async {
+  Future<void> deleteUser(dynamic id) async {
     final response = await http
         .delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
     if (response.statusCode == 200) {
@@ -96,4 +73,8 @@ class UserDataSource {
       throw Exception('Failed to load data');
     }
   }
+
 }
+
+
+

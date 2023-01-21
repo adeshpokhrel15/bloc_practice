@@ -1,9 +1,13 @@
 import 'package:bloc_pratical/features/data/data_source.dart';
+import 'package:bloc_pratical/features/models/data_model.dart';
 import 'package:flutter/material.dart';
 
 class AddToPage extends StatefulWidget {
-  const AddToPage({super.key});
-
+  AddToPage({
+    super.key,
+    required this.userModel,
+  });
+  UserModel? userModel;
   @override
   State<AddToPage> createState() => _AddToPageState();
 }
@@ -14,10 +18,6 @@ class _AddToPageState extends State<AddToPage> {
   TextEditingController descriptionController = TextEditingController();
 
   final UserDataSource userDataSource = UserDataSource();
-
-  // create() {
-  //   userDataSource.postUser(
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,9 @@ class _AddToPageState extends State<AddToPage> {
         child: ListView(
           children: [
             TextField(
-              controller: idController,
+              enabled: false,
+              controller: idController
+                ..text = widget.userModel!.that.toString(),
               decoration: const InputDecoration(
                 hintText: 'Id',
               ),
@@ -39,13 +41,18 @@ class _AddToPageState extends State<AddToPage> {
               height: 10,
             ),
             TextField(
-              controller: titleController,
+              controller: titleController
+                ..text = widget.userModel!.title.toString(),
               decoration: const InputDecoration(
                 hintText: 'Title',
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             TextField(
-              controller: descriptionController,
+              controller: descriptionController
+                ..text = widget.userModel!.body.toString(),
               decoration: const InputDecoration(
                 hintText: 'Description',
               ),
@@ -58,7 +65,8 @@ class _AddToPageState extends State<AddToPage> {
             ElevatedButton(
                 onPressed: () {
                   userDataSource.postUser(
-                    userId: int.parse(idController.text.trim()),
+                    id: int.parse(widget.userModel!.that.toString()),
+                    userId: int.parse(widget.userModel!.userId.toString()),
                     title: titleController.text.trim(),
                     body: descriptionController.text.trim(),
                   );

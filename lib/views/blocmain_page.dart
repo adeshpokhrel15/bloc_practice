@@ -1,6 +1,6 @@
 import 'package:bloc_pratical/bloc/app_states.dart';
 import 'package:bloc_pratical/features/data/data_source.dart';
-import 'package:bloc_pratical/views/details_page.dart';
+import 'package:bloc_pratical/views/addTo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,12 +48,7 @@ class BlocMainPage extends StatelessWidget {
                                     child:
                                         Text(usersList[index].that.toString())),
                                 InkWell(
-                                  onTap: () {
-                                    // Navigator.of(context).push(
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) =>
-                                    //             DetailsPage(usersList[index])));
-                                  },
+                                  onTap: () {},
                                   child: Text(
                                     usersList[index].title,
                                     style: const TextStyle(
@@ -73,7 +68,10 @@ class BlocMainPage extends StatelessWidget {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      const AddToPage()));
+                                                      AddToPage(
+                                                        userModel:
+                                                            usersList[index],
+                                                      )));
                                         },
                                         child: const Text(
                                           'Edit',
@@ -105,8 +103,11 @@ class BlocMainPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddToPage()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AddToPage(
+                      userModel:
+                          UserModel(userId: 0, title: '', body: '', that: 1),
+                    )));
           },
           child: const Icon(Icons.add),
         ));
