@@ -106,7 +106,7 @@ class BlocMainPage extends StatelessWidget {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => AddToPage(
                       userModel:
-                          UserModel(userId: 0, title: '', body: '', that: 1),
+                          UserModel(userId: 0, title: '', body: '', that: 11),
                     )));
           },
           child: const Icon(Icons.add),
