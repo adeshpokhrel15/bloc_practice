@@ -1,6 +1,6 @@
-import 'package:bloc_pratical/practice_2/bloc/app_states.dart';
-import 'package:bloc_pratical/practice_2/features/data/data_source.dart';
-import 'package:bloc_pratical/practice_2/views/details_page.dart';
+import 'package:bloc_pratical/bloc/app_states.dart';
+import 'package:bloc_pratical/features/data/data_source.dart';
+import 'package:bloc_pratical/views/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +21,7 @@ class BlocMainPage extends StatelessWidget {
         body: BlocProvider(
           create: (context) => UserBloc(
             RepositoryProvider.of<UserDataSource>(context),
-          )..add(LoadingUserEvent()),
+          )..add(const LoadingUserEvent()),
           child: BlocBuilder<UserBloc, UserState>(builder: (context, state) {
             if (state is UserLoadingState) {
               return const Center(
@@ -69,7 +69,12 @@ class BlocMainPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const AddToPage()));
+                                        },
                                         child: const Text(
                                           'Edit',
                                           style: TextStyle(color: Colors.green),
@@ -77,7 +82,7 @@ class BlocMainPage extends StatelessWidget {
                                     TextButton(
                                         onPressed: () {
                                           userDataSource.deleteUser(
-                                              usersList[index].that);
+                                              usersList[index].userId);
                                         },
                                         child: const Text(
                                           'Delete',

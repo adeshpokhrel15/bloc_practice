@@ -1,4 +1,4 @@
-import 'package:bloc_pratical/practice_2/features/data/data_source.dart';
+import 'package:bloc_pratical/features/data/data_source.dart';
 import 'package:flutter/material.dart';
 
 class AddToPage extends StatefulWidget {
@@ -12,7 +12,13 @@ class _AddToPageState extends State<AddToPage> {
   TextEditingController idController = TextEditingController();
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
   final UserDataSource userDataSource = UserDataSource();
+
+  // create() {
+  //   userDataSource.postUser(
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +58,10 @@ class _AddToPageState extends State<AddToPage> {
             ElevatedButton(
                 onPressed: () {
                   userDataSource.postUser(
-                      userId: idController.text,
-                      title: titleController.text.trim(),
-                      body: descriptionController.text.trim());
+                    userId: int.parse(idController.text.trim()),
+                    title: titleController.text.trim(),
+                    body: descriptionController.text.trim(),
+                  );
                 },
                 child: const Text('Add To'))
           ],

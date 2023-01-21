@@ -8,7 +8,16 @@ abstract class UserEvent extends Equatable {
 
 // data loading state
 class LoadingUserEvent extends UserEvent {
+  const LoadingUserEvent({id = 0});
   @override
   List<Object> get props => [];
-  // List<Object> get prop => [];
+  int get id => int.parse(id.toString());
+}
+
+class DeletUserEvent extends UserEvent {
+  const DeletUserEvent({id = 0});
+  @override
+  List<Object> get props => [];
+
+  int get id => int.parse(id.toString());
 }
