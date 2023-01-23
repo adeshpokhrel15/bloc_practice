@@ -1,14 +1,14 @@
-import 'package:bloc_pratical/bloc/post_events.dart';
-import 'package:bloc_pratical/bloc/post_states.dart';
+import 'package:bloc_pratical/bloc/updatepost_events.dart';
+import 'package:bloc_pratical/bloc/updatepost_states.dart';
 import 'package:bloc_pratical/features/data/data_source.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DeleteBloc extends Bloc<DeleteEvent, DeletePost> {
+class UpdateBloc extends Bloc<UpdateEvent, UpdatePost> {
   final UserDataSource _userRepository;
 
-  DeleteBloc(this._userRepository) : super(DeleteLoadingState()) {
-    on<LoadingDeleteEvent>((event, emit) async {
-      emit(DeleteLoadingState());
+  UpdateBloc(this._userRepository) : super(UpdateLoadingState()) {
+    on<LoadingUpdateEvent>((event, emit) async {
+      emit(UpdateLoadingState());
 
       try {
         final users = await _userRepository.postUser(
@@ -17,9 +17,9 @@ class DeleteBloc extends Bloc<DeleteEvent, DeletePost> {
             title: event.title,
             userId: event.userId);
         // final deleteUser = await _userRepository.deleteUser(event.id);
-        emit(const DeleteLoadedState());
+        emit(const UpdateLoadedState());
       } catch (e) {
-        emit(DeleteErrorState(e.toString()));
+        emit(UpdateErrorState(e.toString()));
       }
     });
   }

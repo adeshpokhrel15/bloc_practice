@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 @immutable
-abstract class DeleteEvent extends Equatable {
-  const DeleteEvent();
+abstract class UpdateEvent extends Equatable {
+  const UpdateEvent();
 }
 
 // data loading state
-class LoadingDeleteEvent extends DeleteEvent {
-  const LoadingDeleteEvent({id = 0, title = '', body = '', userId = 0});
+class LoadingUpdateEvent extends UpdateEvent {
+  const LoadingUpdateEvent({id = 0, title = '', body = '', userId = 0});
 
   ///
   @override
@@ -19,8 +19,8 @@ class LoadingDeleteEvent extends DeleteEvent {
   int get userId => int.parse(userId.toString());
 }
 
-class DeletedeleteEvent extends DeleteEvent {
-  const DeletedeleteEvent({id = 0, title = '', body = '', userId = 0});
+class UpdateUserEvent extends UpdateEvent {
+  const UpdateUserEvent({id = 0, title = '', body = '', userId = 0});
   @override
   List<Object> get props => [];
 

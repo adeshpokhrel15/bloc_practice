@@ -2,27 +2,27 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
 @immutable
-abstract class DeletePost extends Equatable {
+abstract class UpdatePost extends Equatable {
   //equatable is a package that helps to compare two objects
-  const DeletePost();
+  const UpdatePost();
 }
 
 // user data loading state
-class DeleteLoadingState extends DeletePost {
+class UpdateLoadingState extends UpdatePost {
   @override
   List<Object> get props => [];
 }
 
 // user data loaded state
-class DeleteLoadedState extends DeletePost {
-  const DeleteLoadedState();
+class UpdateLoadedState extends UpdatePost {
+  const UpdateLoadedState();
   @override
   List<Object> get props => [];
 }
 
 //user data error loading state
-class DeleteErrorState extends DeletePost {
-  const DeleteErrorState(this.error);
+class UpdateErrorState extends UpdatePost {
+  const UpdateErrorState(this.error);
   final String error;
   @override
   List<Object> get props => [error];

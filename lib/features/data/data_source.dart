@@ -17,10 +17,10 @@ class UserDataSource {
 
 //post user
   Future<void> postUser(
-      {required int userId,
+      {int? userId,
       required String title,
       required String body,
-      required int id}) async {
+      int? id}) async {
     final response = await http.post(Uri.parse(url),
         body: jsonEncode({
           'userId': userId,
@@ -75,22 +75,6 @@ class UserDataSource {
       throw Exception('Failed to load data');
     }
   }
-
-// get User
-
-  //get comment
-  // Future<List<CommentModel>> getComment({
-  //  required int uid,
-  // }) async {
-  //   final response = await http.get(Uri.parse("$url/$uid/comments"), headers: {
-  //     'Content-Type': 'application/json; charset=UTF-8',
-  //   });
-  //   print("$url/$id/comments");
-  //   Iterable userList = json.decode(response.body);
-  //   List<CommentModel> users =
-  //       userList.map((user) => CommentModel.fromJson(user)).toList();
-  //   return users;
-  // }
 }
 
 class CommentDataSource {

@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserModel {
-  final int? userId;
-  final int? that;
-  final String title;
-  final String body;
+  int? userId;
+  int? that;
+  String title;
+  String body;
 
   UserModel({
     this.userId,
