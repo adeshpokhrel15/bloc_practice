@@ -39,6 +39,7 @@ class UserDataSource {
     }
   }
 
+//update user
   Future<UserModel> updateUser(
       {required int userId,
       required String title,
@@ -63,10 +64,11 @@ class UserDataSource {
     }
   }
 
-//delete user
+//delete users
   Future<void> deleteUser(dynamic id) async {
     final response = await http
         .delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
+
     if (response.statusCode == 200) {
       print("Successfully");
     } else {
@@ -74,7 +76,30 @@ class UserDataSource {
     }
   }
 
+// get User
+
+  //get comment
+  // Future<List<CommentModel>> getComment({
+  //  required int uid,
+  // }) async {
+  //   final response = await http.get(Uri.parse("$url/$uid/comments"), headers: {
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //   });
+  //   print("$url/$id/comments");
+  //   Iterable userList = json.decode(response.body);
+  //   List<CommentModel> users =
+  //       userList.map((user) => CommentModel.fromJson(user)).toList();
+  //   return users;
+  // }
 }
 
-
-
+class CommentDataSource {
+  Future<List<CommentModel>> getComment(int uid) async {
+    var response = await http.get(
+        Uri.parse('https://jsonplaceholder.typicode.com/posts/$uid/comments'));
+    Iterable commentsList = json.decode(response.body);
+    List<CommentModel> comments =
+        commentsList.map((user) => CommentModel.fromJson(user)).toList();
+    return comments;
+  }
+}
